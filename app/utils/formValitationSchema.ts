@@ -1,0 +1,35 @@
+import * as Yup from 'yup';
+
+export const schema = Yup.object().shape({
+    housing: Yup.string().required('Required field'),
+    sale: Yup.string().required('Required field'),
+    title: Yup.string().required('Required field'),
+    explanation: Yup.string().required('Required field'),
+    price: Yup.number().min(1, "Insert a valid Price").required('Required field'),
+    number_of_room: Yup.number().min(0, "Insert a valid Number of Room").required('Required field'),
+    gross_m2: Yup.number().min(1, "Insert a valid Gross M²").required('Required field'),
+    net_m2: Yup.number().min(0, "Insert a valid Net M²").required('Required field'),
+    warming_type: Yup.string().required('Required field'),
+    building_age: Yup.number().min(0, "Insert a valid Building Age").required('Required field'),
+    floor_location: Yup.number().min(0, "Insert a valid Floor Location").required('Required field'),
+    avaliable_for_loan: Yup.string().required('Required field'),
+    furnished: Yup.string(),
+    status: Yup.string(),
+    dues: Yup.number().min(0, "Insert a valid Dues"),
+    swap: Yup.string(),
+    front: Yup.string(),
+    rental_income: Yup.number().min(0, "Insert a valid Rental Income"),
+    address: Yup.string().required(),
+    interior_features: Yup.array().of(Yup.string()),
+    external_features: Yup.array().of(Yup.string()),
+    files: Yup.array().of(Yup.mixed().test("fileSize", "file is too large", () => true)),
+    name: Yup.string().required(),
+    email: Yup.string().email().required(),
+    mobile_number: Yup.string(),
+    mobile_number_2: Yup.string(),
+    telephone: Yup.string(),
+    latlng: Yup.object().shape({
+        lat: Yup.string().required(),
+        lng: Yup.string().required(),
+    })
+});
